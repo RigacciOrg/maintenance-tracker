@@ -337,9 +337,7 @@ For issues, questions, or feature requests, please open an issue on GitHub.
 - [ ] Import/export maintenance history (CSV, JSON)
 - [ ] Email notifications for upcoming maintenance
 - [ ] Multi-language support
-- [ ] Mobile app (iOS/Android)
 - [ ] REST API for external integrations
-- [ ] Fuel consumption tracking
 - [ ] Expense management
 - [ ] Document attachments (receipts, invoices)
 
