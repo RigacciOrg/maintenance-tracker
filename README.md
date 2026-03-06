@@ -322,6 +322,16 @@ This means:
 - ✅ If you run this as a web service, you must provide source code to users
 - ✅ Attribution required
 
+## Third-Party Libraries Included
+
+This repository includes the following third-party libraries:
+
+- Bootstrap 5.3.8 - MIT License
+- Bootstrap Icons 1.13.1 - MIT License
+- Font Awesome Free 7.2.0 - Font Awesome Free License
+
+See respective LICENSE files in the `vendor/` directory.
+
 ## Support
 
 For issues, questions, or feature requests, please open an issue on GitHub.
