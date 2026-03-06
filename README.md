@@ -96,13 +96,13 @@ mysql> EXIT;
 **For PostgreSQL:**
 
 ```bash
-psql -U maintenance_user -d maintenance_tracker -f database.sql
+psql -U maintenance_user -d maintenance_tracker -f database-pgsql.sql
 ```
 
 **For MySQL:**
 
 ```bash
-mysql -u maintenance_user -p maintenance_tracker < database.sql
+mysql -u maintenance_user -p maintenance_tracker < database-mysql.sql
 ```
 
 ### 5. Configure Database Connection

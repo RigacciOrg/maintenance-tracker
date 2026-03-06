@@ -31,7 +31,7 @@ try {
     $models = $modelStmt->fetchAll();
 } catch (PDOException $e) {
     $models = [];
-    $error  = 'Could not load vehicle models: ' . $e->getMessage();
+    $error  = h('Could not load vehicle models: ' . $e->getMessage());
 }
 
 // JSON map of model metadata → used by JS to update unit labels on model change
@@ -65,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // ── Validation ────────────────────────────────────
     if (empty($nickname)) {
-        $error = 'A vehicle name / nickname is required.';
+        $error = h('A vehicle name / nickname is required.');
 
     } elseif ($model_id === null) {
-        $error = 'A vehicle model must be selected.';
+        $error = h('A vehicle model must be selected.');
 
     } else {
         // Make sure the chosen model actually belongs to this user
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $chk->bindParam(':uid', $userId,   PDO::PARAM_INT);
         $chk->execute();
         if ($chk->rowCount() === 0) {
-            $error    = 'The selected model does not exist or does not belong to you.';
+            $error    = h('The selected model does not exist or does not belong to you.');
             $model_id = null;
         }
     }
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ins->bindParam(':notes',     $notes);
             $ins->execute();
 
-            $success = "Vehicle <strong>" . htmlspecialchars($nickname) . "</strong> added successfully!";
+            $success = "Vehicle <strong>" . h($nickname) . "</strong> added successfully!";
 
             // Clear form so the user can add another vehicle right away
             $nickname = $license_plate = $vin = $start_date = '';
@@ -116,7 +116,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $model_id        = null;
 
         } catch (PDOException $e) {
-            $error = 'Database error: ' . $e->getMessage();
+            // Check for unique violation 23505 or integrity constraint violation 23000.
+            $sqlState = $e->errorInfo[0];
+            if (in_array($sqlState, ['23000', '23505'])) {
+                $error = h('A vehicle with this name already exists');
+            } else {
+                $error = h('Database error: ' . $e->getMessage());
+            }
         }
     }
 }
@@ -147,7 +153,7 @@ include 'includes/header.php';
 <?php if (!empty($success)): ?>
     <div class="alert alert-success alert-dismissible fade show">
         <i class="bi bi-check-circle-fill me-2"></i>
-        <?= h($success) ?> 
+        <?= $success ?> 
         — <a href="index.php" class="alert-link">Go to My Vehicles</a>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
@@ -155,7 +161,7 @@ include 'includes/header.php';
 <?php if (!empty($error)): ?>
     <div class="alert alert-danger alert-dismissible fade show">
         <i class="bi bi-exclamation-triangle-fill me-2"></i>
-        <?= h($error) ?> 
+        <?= $error ?> 
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 <?php endif; ?>

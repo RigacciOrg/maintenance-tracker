@@ -4,16 +4,16 @@
 -- Create database (run separately as superuser if needed)
 -- CREATE DATABASE maintenance_tracker;
 -- \c maintenance_tracker;
---
+
 -- How to drop tables in constraint order:
--- DROP TABLE maintenance_history;
--- DROP TABLE vehicle_notes;
--- DROP TABLE vehicles;
--- DROP TABLE maintenance_operations;
--- DROP TABLE maintenance_items;
--- DROP TABLE vehicle_models;
--- DROP TABLE users;
---
+DROP TABLE maintenance_history;
+DROP TABLE vehicle_notes;
+DROP TABLE vehicles;
+DROP TABLE maintenance_operations;
+DROP TABLE maintenance_items;
+DROP TABLE vehicle_models;
+DROP TABLE users;
+
 -- How to reset serial sequences after data import:
 -- SELECT setval(pg_get_serial_sequence('users', 'user_id'), (SELECT MAX(user_id) FROM users));
 -- SELECT setval(pg_get_serial_sequence('vehicle_models', 'model_id'), (SELECT MAX(model_id) FROM vehicle_models));
@@ -88,7 +88,8 @@ CREATE TABLE vehicles (
     notes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_v_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    CONSTRAINT fk_v_model FOREIGN KEY (model_id) REFERENCES vehicle_models(model_id) ON DELETE RESTRICT
+    CONSTRAINT fk_v_model FOREIGN KEY (model_id) REFERENCES vehicle_models(model_id) ON DELETE RESTRICT,
+    CONSTRAINT uk_nickname UNIQUE (user_id, nickname)
 );
 
 -- Vehicle notes (free-form log entries per vehicle)
