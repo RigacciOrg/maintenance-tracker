@@ -200,16 +200,16 @@ http://localhost/maintenance-tracker/
 
 ### User Roles
 
-**Administrator:**
-- Manage all users
-- Create/edit/delete vehicle models
-- Full access to all features
-
 **Regular User:**
-- Manage own vehicles
-- View and use existing vehicle models
+- Create/edit/delete vehicle models
+- Define maintenance programs with items and operations
+- Create/manage own vehicles
 - Track maintenance and history
 - Change own password and email
+
+**Administrator:**
+- Manage users
+- Full access to all features
 
 ## Database Schema
 
@@ -223,7 +223,17 @@ The application uses the following main tables:
 - `maintenance_history` - Service records
 - `vehicle_notes` - Timestamped observations
 
-See `database.sql` for complete schema definition.
+See `database-*.sql` for complete schema definition.
+
+### Key Features of the Schema
+
+- **Cascading deletes**: Deleting a user removes all their vehicles, models,
+and history
+- **Unique constraints**: Prevents duplicate models, items, and operations
+- **Data validation**: CHECK constraints on unit types ensure data integrity
+- **Flexible intervals**: Support both time-based (days) and distance-based
+(km/miles) maintenance
+- **Audit trail**: All tables include `created_at` timestamp
 
 ## Security
 
