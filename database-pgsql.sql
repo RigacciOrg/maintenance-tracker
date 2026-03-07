@@ -128,5 +128,5 @@ CREATE INDEX idx_maintenance_history_operation_id ON maintenance_history(operati
 CREATE INDEX idx_vehicle_notes_vehicle_id ON vehicle_notes(vehicle_id);
 
 -- Create 'admin' user with password 'password' (change immediately after first login)
-INSERT INTO users (username, password_hash, email, administrator).
-VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@example.com', TRUE);
+INSERT INTO users (username, password_hash, email, administrator)
+    VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@example.com', TRUE);
