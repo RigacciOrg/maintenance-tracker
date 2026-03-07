@@ -574,7 +574,7 @@ include 'includes/header.php';
                         Cancel
                     </button>
                     <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-check-circle me-1"></i>Confirm Registration
+                        <i class="bi bi-check-circle me-1"></i>Register
                     </button>
                 </form>
             </div>

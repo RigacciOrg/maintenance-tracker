@@ -129,37 +129,12 @@ define('DB_USER', 'maintenance_user');
 define('DB_PASS', 'your_password');
 ```
 
-### 6. Create Initial Admin User
+### 6. Initial Admin User
 
-Run the database migration to create the first admin user:
-
-**PostgreSQL:**
-
-```bash
-psql -U maintenance_user -d maintenance_tracker
-INSERT INTO users (username, password_hash, email, administrator) 
-VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@example.com', TRUE);
--- Password: 'password' (change immediately after first login)
-```
-
-**MySQL:**
-
-```bash
-mysql -u maintenance_user -p maintenance_tracker
-INSERT INTO users (username, password_hash, email, administrator) 
-VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@example.com', TRUE);
--- Password: 'password' (change immediately after first login)
-```
-
-Or create a demo user by running:
-
-```bash
-# PostgreSQL
-psql -U maintenance_user -d maintenance_tracker -c "INSERT INTO users (username, password_hash, email, administrator) VALUES ('demo', '\$2y\$10\$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'demo@example.com', TRUE);"
-
-# MySQL
-mysql -u maintenance_user -p maintenance_tracker -e "INSERT INTO users (username, password_hash, email, administrator) VALUES ('demo', '\$2y\$10\$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'demo@example.com', TRUE);"
-```
+The database initialization script, based on the provided SQL 
+schema, creates a default admin user with the password 
+``password``. **This password must be changed immediately after 
+the first login**.
 
 ### 7. Access the Application
 
@@ -354,11 +329,10 @@ For issues, questions, or feature requests, please open an issue on GitHub.
 
 ## Roadmap
 
-- [ ] Import/export maintenance history (CSV, JSON)
+- [ ] Import/export maintenance history and programs (CSV, JSON)
 - [ ] Email notifications for upcoming maintenance
 - [ ] Multi-language support
 - [ ] REST API for external integrations
-- [ ] Expense management
 - [ ] Document attachments (receipts, invoices)
 
 ---
