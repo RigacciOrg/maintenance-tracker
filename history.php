@@ -73,8 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $checkStmt->bindParam(':hid', $historyId, PDO::PARAM_INT);
             $checkStmt->bindParam(':uid', $userId,    PDO::PARAM_INT);
             $checkStmt->execute();
+            $row = $checkStmt->fetch();
 
-            if ($checkStmt->rowCount() === 0) {
+            if ($row === false) {
                 $error = 'History record not found or access denied.';
             } else {
                 $delStmt = $db->prepare("DELETE FROM maintenance_history WHERE history_id = :hid");
