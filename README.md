@@ -43,8 +43,8 @@ notes.
 
 - **Web Server** - Apache or Nginx with PHP support
 - **PHP** - Version 7.4 or higher
-- **Database** - PostgreSQL 12+ or MySQL 5.7+
-- **PHP Extensions** - PDO, pdo_pgsql (or pdo_mysql), session, mbstring
+- **Database** - PostgreSQL 12+, MySQL 5.7+ or SQLite3
+- **PHP Extensions** - PDO, pdo_pgsql (or pdo_mysql or pdo_sqlite3), session, mbstring
 
 ## Installation
 
@@ -105,6 +105,14 @@ psql -U maintenance_user -d maintenance_tracker -f database-pgsql.sql
 mysql -u maintenance_user -p maintenance_tracker < database-mysql.sql
 ```
 
+**For SQLite:**
+
+```bash
+sqlite3 maintenance_tracker.db < database-sqlite.sql
+chmod 664 maintenance_tracker.db
+chown www-data:www-data maintenance_tracker.db
+```
+
 ### 5. Configure Database Connection
 
 Edit `config/database.php` and update the connection settings:
@@ -127,6 +135,13 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'maintenance_tracker');
 define('DB_USER', 'maintenance_user');
 define('DB_PASS', 'your_password');
+```
+
+**For SQLite:**
+
+```php
+define('DB_TYPE', 'sqlite');
+define('DB_SQLITE_FILE', __DIR__ . '/../db/maintenance_tracker.db');
 ```
 
 ### 6. Initial Admin User

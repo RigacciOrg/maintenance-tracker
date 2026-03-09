@@ -5,7 +5,7 @@
  */
 
 // Database credentials
-define('DB_TYPE', 'pgsql');        // Options: 'pgsql', 'mysql', 'sqlite'
+define('DB_TYPE', 'sqlite');        // Options: 'pgsql', 'mysql', 'sqlite'
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'maintenance_tracker');
 define('DB_USER', 'maintenance_user');
