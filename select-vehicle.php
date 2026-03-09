@@ -23,8 +23,9 @@ if ($vehicleId) {
     $stmt->bindParam(':vid', $vehicleId, PDO::PARAM_INT);
     $stmt->bindParam(':uid', $userId,    PDO::PARAM_INT);
     $stmt->execute();
+    $row = $stmt->fetch();
 
-    if ($stmt->rowCount() === 1) {
+    if ($row !== false) {
         $_SESSION['selected_vehicle_id'] = $vehicleId;
         header('Location: maintenance-status.php');
         exit();
