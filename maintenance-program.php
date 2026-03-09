@@ -36,8 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $checkStmt->bindParam(':model_id', $model_id, PDO::PARAM_INT);
         $checkStmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $checkStmt->execute();
+        $row = $checkStmt->fetch();
 
-        if ($checkStmt->rowCount() === 0) {
+        if ($row === false) {
             $error = 'Model not found or access denied';
         } elseif (empty($item_name)) {
             $error = 'Item name is required';
@@ -76,7 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $checkStmt->bindParam(':item_id', $item_id, PDO::PARAM_INT);
             $checkStmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
             $checkStmt->execute();
-            if ($checkStmt->rowCount() === 0) {
+            $row = $checkStmt->fetch();
+            if ($row === false) {
                 $error = 'Item not found or access denied';
             } else {
                 // Check if item has maintenance history (CONSTRAINT ON CASCADE RESTRICT).

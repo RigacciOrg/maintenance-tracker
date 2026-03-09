@@ -65,8 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $checkStmt->bindParam(':model_id', $model_id, PDO::PARAM_INT);
                     $checkStmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
                     $checkStmt->execute();
+                    $row = $checkStmt->fetch();
 
-                    if ($checkStmt->rowCount() === 0) {
+                    if ($row === false) {
                         $error = 'Model not found or access denied';
                     } else {
                         $query = "UPDATE vehicle_models 
