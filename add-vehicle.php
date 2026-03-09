@@ -78,7 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $chk->bindParam(':mid', $model_id, PDO::PARAM_INT);
         $chk->bindParam(':uid', $userId,   PDO::PARAM_INT);
         $chk->execute();
-        if ($chk->rowCount() === 0) {
+        $row = $chk->fetch();
+        if ($row === false) {
             $error    = h('The selected model does not exist or does not belong to you.');
             $model_id = null;
         }
