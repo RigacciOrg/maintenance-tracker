@@ -144,14 +144,61 @@ define('DB_TYPE', 'sqlite');
 define('DB_SQLITE_FILE', __DIR__ . '/../db/maintenance_tracker.db');
 ```
 
-### 6. Initial Admin User
+### 6. Important: Protect SQLite Database File
+
+**If you're using SQLite**, the database file 
+(`maintenance_tracker.db`) must be protected from direct web 
+access to prevent unauthorized downloads.
+
+#### Option 1: Place Database Outside Web Root (Recommended)
+
+Store the database file **outside** your web-accessible 
+directory:
+```
+/var/www/
+├── html/                          ← Web root
+│   └── maintenance-tracker/
+│       ├── config/
+│       ├── includes/
+│       └── index.php
+└── data/
+    └── maintenance_tracker.db     ← Database here (not accessible via web)
+```
+Update `config/database.php`:
+```php
+define('DB_SQLITE_FILE', '/var/www/data/maintenance_tracker.db');
+```
+
+#### Option 2: Use .htaccess to Block Access
+
+If you must keep the database in the web root, create a 
+`.htaccess` file in your project root:
+
+**For Apache:**
+```apache
+# .htaccess
+<Files "*.db">
+    Require all denied
+</Files>
+```
+
+**For Nginx:**
+
+Add to your server configuration:
+```nginx
+location ~* \.db$ {
+    deny all;
+}
+```
+
+### 7. Initial Admin User
 
 The database initialization script, based on the provided SQL 
 schema, creates a default admin user with the password 
 ``password``. **This password must be changed immediately after 
 the first login**.
 
-### 7. Access the Application
+### 8. Access the Application
 
 Open your browser and navigate to:
 
