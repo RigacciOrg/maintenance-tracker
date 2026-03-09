@@ -94,8 +94,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $opCheck->bindParam(':opid', $operationId, PDO::PARAM_INT);
         $opCheck->bindParam(':iid',  $itemId,      PDO::PARAM_INT);
         $opCheck->execute();
+        $row = $opCheck->fetch();
 
-        if ($opCheck->rowCount() === 0) {
+        if ($row === false) {
             $error = 'Invalid operation.';
         } else {
             try {
