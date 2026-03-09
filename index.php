@@ -40,8 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $checkStmt->bindParam(':vid', $deleteVehicleId, PDO::PARAM_INT);
             $checkStmt->bindParam(':uid', $userId,          PDO::PARAM_INT);
             $checkStmt->execute();
+            $ros = $checkStmt->fetch();
 
-            if ($checkStmt->rowCount() === 0) {
+            if ($row === false) {
                 $error = 'Vehicle not found or access denied.';
             } else {
                 $delStmt = $db->prepare("DELETE FROM vehicles WHERE vehicle_id = :vid");
