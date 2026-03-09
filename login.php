@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $db->prepare($query);
             $stmt->bindParam(':username', $username);
             $stmt->execute();
+            $user = $stmt->fetch();
 
-            if ($stmt->rowCount() === 1) {
-                $user = $stmt->fetch();
+            if ($user !== false) {
 
                 // Verify password
                 if (password_verify($password, $user['password_hash'])) {
