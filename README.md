@@ -37,7 +37,18 @@ notes.
 
 ## Screenshots
 
-*(Add screenshots here)*
+<table>
+  <tr>
+    <td width="50%">
+      <img src="screenshots/img-04-mobile-login.png" alt="Login Screen" width="100%">
+      <p align="center"><b>Dashboard</b></p>
+    </td>
+    <td width="50%">
+      <img src="screenshots/img-05-mobile-menu.png" alt="Main Menu" width="100%">
+      <p align="center"><b>Vehicle List</b></p>
+    </td>
+  </tr>
+</table>
 
 ## Requirements
 

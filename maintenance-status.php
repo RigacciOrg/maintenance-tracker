@@ -320,7 +320,7 @@ include 'includes/header.php';
 <?php else: ?>
     <div class="row g-3">
         <?php foreach ($itemStatuses as $status): ?>
-            <div class="col-12 col-md-6 col-xl-4">
+            <div class="col-12 col-md-6 col-xl-3">
                 <a href="maintenance-item.php?item_id=<?php echo $status['item_id']; ?>&vehicle_id=<?php echo $vehicleId; ?>"
                    class="text-decoration-none">
                     <div class="card item-card item-card-<?php echo $status['urgency_colour']; ?> h-100 shadow-sm">
