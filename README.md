@@ -39,13 +39,21 @@ notes.
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="25%">
       <img src="screenshots/img-04-mobile-login.png" alt="Login Screen" width="100%">
-      <p align="center"><b>Dashboard</b></p>
+      <p align="center"><b>Login Screen</b></p>
     </td>
-    <td width="50%">
+    <td width="25%">
       <img src="screenshots/img-05-mobile-menu.png" alt="Main Menu" width="100%">
-      <p align="center"><b>Vehicle List</b></p>
+      <p align="center"><b>Main Menu</b></p>
+    </td>
+    <td width="25%">
+      <img src="screenshots/img-06-mobile-item-operations.png" alt="Operations" width="100%">
+      <p align="center"><b>Operations</b></p>
+    </td>
+    <td width="25%">
+      <img src="screenshots/img-07-mobile-register-operation.png" alt="Register Operation" width="100%">
+      <p align="center"><b>Register Operation</b></p>
     </td>
   </tr>
 </table>
