@@ -37,6 +37,8 @@ notes.
 
 ## Screenshots
 
+### Mobile View
+
 <table>
   <tr>
     <td width="25%">
@@ -57,6 +59,26 @@ notes.
     </td>
   </tr>
 </table>
+
+### Desktop View
+
+<table>
+  <tr>
+    <td width="33%">
+      <img src="screenshots/img-01-select-vehicle.png" alt="Vehicle Selection" width="100%">
+      <p align="center"><b>Vehicle Selection</b></p>
+    </td>
+    <td width="33%">
+      <img src="screenshots/img-02-maintenance-status.png" alt="Maintenance Status" width="100%">
+      <p align="center"><b>Maintenance Status</b></p>
+    </td>
+    <td width="33%">
+      <img src="screenshots/img-03-maintenance-item.png" alt="Maintenance Item" width="100%">
+      <p align="center"><b>Maintenance Item</b></p>
+    </td>
+  </tr>
+</table>
+
 
 ## Requirements
 
